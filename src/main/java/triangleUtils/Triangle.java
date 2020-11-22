@@ -41,5 +41,39 @@ public class Triangle {
 
         return x + y > z && x + z > y && y + z > x;
     }
+
+    public String getType(Object ...args) throws WrongInputException {
+        if(!this.isTriangle(args)) {
+            throw new WrongInputException("Wrong arguments");
+        }
+
+        double x = args[0] instanceof Double ? (Double) args[0] : (Integer) args[0];
+        double y = args[1] instanceof Double ? (Double) args[1] : (Integer) args[1];
+        double z = args[2] instanceof Double ? (Double) args[2] : (Integer) args[2];
+        double max = this.getMax(x, y, z);
+
+        if(x == max) {
+            double temp = x;
+            x = z;
+            z = temp;
+        }
+        else if(y == max) {
+            double temp = y;
+            y = z;
+            z = temp;
+        }
+
+        double sidesSquaredDiff = z * z - y * y - x * x;
+
+        if(Math.abs(sidesSquaredDiff) < 0.0001) {
+            return "right";
+        }
+        else if(sidesSquaredDiff > 0) {
+            return "obtuse";
+        }
+        else {
+            return "acute";
+        }
+    }
 }
 
