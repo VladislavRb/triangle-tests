@@ -91,9 +91,7 @@ public class TriangleTest {
     @ParameterizedTest(name = "wrong arguments length")
     @MethodSource("provideArgumentsForWrongArgumentsLengthException")
     void wrongArgumentsLengthException(Object ...args) {
-        Exception exception = assertThrows(WrongInputException.class, () -> {
-            triangle.isTriangle(args);
-        });
+        Exception exception = assertThrows(WrongInputException.class, () -> triangle.isTriangle(args));
 
         String expectedMessage = "3 arguments should be passed";
         String actualMessage = exception.getMessage();
@@ -104,9 +102,7 @@ public class TriangleTest {
     @ParameterizedTest(name = "wrong arguments type")
     @MethodSource("provideArgumentsForWrongArgumentsTypeException")
     void wrongArgumentsTypeException(Object ...args) {
-        Exception exception = assertThrows(WrongInputException.class, () -> {
-            triangle.isTriangle(args);
-        });
+        Exception exception = assertThrows(WrongInputException.class, () -> triangle.isTriangle(args));
 
         String expectedMessage = "Wrong type of one ore more arguments";
         String actualMessage = exception.getMessage();
@@ -117,9 +113,7 @@ public class TriangleTest {
     @ParameterizedTest(name = "zero sides")
     @MethodSource("provideArgumentsForZeroArgumentsException")
     void zeroArgumentsException(Object... args) {
-        Exception exception = assertThrows(WrongInputException.class, () -> {
-            triangle.isTriangle(args);
-        });
+        Exception exception = assertThrows(WrongInputException.class, () -> triangle.isTriangle(args));
 
         String expectedMessage = "A side value can't be equal to 0";
         String actualMessage = exception.getMessage();
@@ -130,9 +124,7 @@ public class TriangleTest {
     @ParameterizedTest(name = "negative sides")
     @MethodSource("provideArgumentsForNegativeArgumentsException")
     void negativeArgumentsException(Object... args) {
-        Exception exception = assertThrows(WrongInputException.class, () -> {
-            triangle.isTriangle(args);
-        });
+        Exception exception = assertThrows(WrongInputException.class, () -> triangle.isTriangle(args));
 
         String expectedMessage = "A side value can't be negative";
         String actualMessage = exception.getMessage();
